@@ -1,16 +1,8 @@
-import React from "react";
-import {
-  Dialog,
-  DialogContent,
-  Button,
-  Typography,
-  Paper,
-} from "@material-ui/core";
+import { Dialog, DialogContent, Button, Typography } from "@material-ui/core";
 
 import modalImage from "../../assets/images/modal-image.png";
 
 import { hideEmail } from "../../utils/functions";
-
 import { useStyles } from "./styles";
 
 interface ConfirmModalProps {
@@ -30,30 +22,11 @@ export function ConfirmModal({
     <Dialog open={confirmModalOpen} onClose={handleCloseConfirmModal}>
       <div>
         <DialogContent className={classes.dialogContent}>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
+          <div className={classes.imageContainer}>
             <img src={modalImage} alt='Confirmação' />
           </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              margin: "24px 0",
-            }}
-          >
-            <Typography
-              style={{
-                textAlign: "center",
-                marginBottom: 16,
-                fontSize: 18,
-                fontWeight: 500,
-              }}
-            >
+          <div className={classes.dialogTitle}>
+            <Typography className={classes.dialogSubtitle}>
               Cadastro Realizado com Sucesso!
             </Typography>
             <Typography style={{ textAlign: "center" }}>
