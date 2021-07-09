@@ -45,6 +45,14 @@ export function RegisterForm() {
     setConfirmModalOpen(false);
   }
 
+  function handleSendRegister(values: FormData) {
+    if (values.password !== values.confirmPassword) {
+      return errorMessage("Senhas não são iguais!");
+    }
+    addRegister(values);
+    handleOpenConfirmModal();
+  }
+
   return (
     <Grid item xs={12} md={12} lg={6} className={classes.loginWrapper}>
       <div className={classes.loginContainer}>
@@ -65,8 +73,7 @@ export function RegisterForm() {
         <Formik
           initialValues={formData}
           onSubmit={(values) => {
-            addRegister(values);
-            handleOpenConfirmModal();
+            handleSendRegister(values);
             values.cpf = "";
             values.email = "";
             values.password = "";

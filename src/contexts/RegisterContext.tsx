@@ -16,9 +16,6 @@ export function RegisterContextProvider({
   children,
 }: RegisterContextProviderProps) {
   function addRegister(values: FormData) {
-    if (values.password !== values.confirmPassword) {
-      return errorMessage("Senhas não são iguais!");
-    }
     return successMessage("Resgistro concluído com sucesso!");
   }
 
