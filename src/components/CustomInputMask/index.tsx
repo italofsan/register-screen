@@ -7,26 +7,6 @@ interface TextMaskCustomProps {
 
 export const CustomInputMask = (props: TextMaskCustomProps) => {
   const { inputRef, ...other } = props;
-  // let maskInput: (string | RegExp)[] = [];
-
-  // if (props.name === "cpf") {
-  //   return (maskInput = [
-  //     /\d/,
-  //     /\d/,
-  //     /\d/,
-  //     ".",
-  //     /\d/,
-  //     /\d/,
-  //     /\d/,
-  //     ".",
-  //     /\d/,
-  //     /\d/,
-  //     /\d/,
-  //     "-",
-  //     /\d/,
-  //     /\d/,
-  //   ]);
-  // }
 
   return (
     <MaskedInput
