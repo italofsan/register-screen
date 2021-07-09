@@ -113,13 +113,14 @@ export function RegisterForm() {
                 label='E-mail'
                 className={classes.inputForm}
                 InputProps={{
-                  endAdornment: !errors.email && (
+                  endAdornment: !errors.email && values.email && (
                     <CheckIcon className={classes.iconCheck} />
                   ),
                 }}
                 helperText={errors.email}
                 variant='filled'
                 size='medium'
+                type='email'
                 fullWidth
               />
               <TextField
