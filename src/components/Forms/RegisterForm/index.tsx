@@ -14,9 +14,17 @@ import { Formik, Form as FormikForm } from "formik";
 import logoImage from "../../../assets/images/logo-image.png";
 
 import { registerValidation } from "../../../utils/validations";
+import { infoMessage, errorMessage } from "../../Messages";
 import { CustomInputMask } from "../../CustomInputMask";
 import { ConfirmModal } from "../../Modal";
 import { useStyles } from "./styles";
+
+interface FormData {
+  cpf: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
 
 export function RegisterForm() {
   const classes = useStyles();
@@ -35,6 +43,13 @@ export function RegisterForm() {
   }
   function handleCloseConfirmModal() {
     setConfirmModalOpen(false);
+  }
+
+  function handleSendRegister(values: FormData) {
+    if (values.password !== values.confirmPassword) {
+      return errorMessage("Senhas não são iguais!");
+    }
+    handleOpenConfirmModal();
   }
 
   return (
@@ -57,10 +72,7 @@ export function RegisterForm() {
         <Formik
           initialValues={formData}
           onSubmit={(values) => {
-            if (values.password !== values.confirmPassword) {
-              return alert("Senhas não são iguais!");
-            }
-            handleOpenConfirmModal();
+            handleSendRegister(values);
             values.cpf = "";
             values.email = "";
             values.password = "";
@@ -173,7 +185,7 @@ export function RegisterForm() {
               <Button
                 size='medium'
                 variant='outlined'
-                onClick={() => alert("Necessário implementação")}
+                onClick={() => infoMessage("Necessário implementação")}
                 className={classes.loginOutlinedButton}
                 fullWidth
               >
@@ -182,7 +194,7 @@ export function RegisterForm() {
               <Button
                 size='medium'
                 variant='text'
-                onClick={() => alert("Necessário implementação")}
+                onClick={() => infoMessage("Necessário implementação")}
                 className={classes.loginTextButton}
                 fullWidth
               >

@@ -2,6 +2,7 @@ import { Container, Grid, Typography } from "@material-ui/core";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 import { RegisterForm } from "../../components/Forms/RegisterForm";
+import { infoMessage } from "../../components/Messages";
 
 import registerImage from "../../assets/images/register-image.png";
 
@@ -14,7 +15,7 @@ export function Register() {
     <div className={classes.root}>
       <div
         className={classes.goBack}
-        onClick={() => alert("Necessário implementação")}
+        onClick={() => infoMessage("Necessário implementação")}
       >
         <ArrowBackIcon className={classes.goBackIcon} />
         <Typography className={classes.goBackText}>Retornar</Typography>
