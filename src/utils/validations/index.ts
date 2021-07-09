@@ -16,6 +16,6 @@ export const registerValidation = Yup.object().shape({
     .required("É necessário preencher sua senha!")
     .min(6, "É necessário escolher uma senha com pelo menos 6 caracteres"),
   confirmPassword: Yup.string()
-    .required("É confirmar sua senha!")
+    .required("É necessário confirmar sua senha!")
     .min(6, "É necessário escolher uma senha com pelo menos 6 caracteres"),
 });

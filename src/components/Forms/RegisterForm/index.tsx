@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
   Button,
   Grid,
@@ -13,21 +13,21 @@ import { Formik, Form as FormikForm } from "formik";
 
 import logoImage from "../../../assets/images/logo-image.png";
 
-import { registerValidation } from "../../../utils/validations";
+import { RegisterContext } from "../../../contexts/RegisterContext";
+
 import { infoMessage, errorMessage } from "../../Messages";
 import { CustomInputMask } from "../../CustomInputMask";
 import { ConfirmModal } from "../../Modal";
-import { useStyles } from "./styles";
 
-interface FormData {
-  cpf: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-}
+import { registerValidation } from "../../../utils/validations";
+import { FormData } from "../../../types";
+
+import { useStyles } from "./styles";
 
 export function RegisterForm() {
   const classes = useStyles();
+  const { addRegister } = useContext(RegisterContext);
+
   const formData = {
     cpf: "",
     email: "",
@@ -43,13 +43,6 @@ export function RegisterForm() {
   }
   function handleCloseConfirmModal() {
     setConfirmModalOpen(false);
-  }
-
-  function handleSendRegister(values: FormData) {
-    if (values.password !== values.confirmPassword) {
-      return errorMessage("Senhas não são iguais!");
-    }
-    handleOpenConfirmModal();
   }
 
   return (
@@ -72,7 +65,8 @@ export function RegisterForm() {
         <Formik
           initialValues={formData}
           onSubmit={(values) => {
-            handleSendRegister(values);
+            addRegister(values);
+            handleOpenConfirmModal();
             values.cpf = "";
             values.email = "";
             values.password = "";
