@@ -1,5 +1,5 @@
 import { createContext, ReactNode } from "react";
-import { errorMessage, successMessage } from "../components/Messages";
+import { successMessage } from "../components/Messages";
 import { FormData } from "../types";
 
 type RegisterContextType = {

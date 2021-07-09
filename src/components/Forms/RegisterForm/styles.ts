@@ -57,6 +57,7 @@ export const useStyles = makeStyles((theme: Theme) =>
       marginTop: theme.spacing(3),
       color: "#5850EC",
       display: "flex",
+      borderColor: "#1071E6",
       [theme.breakpoints.down("sm")]: {
         display: "none",
       },

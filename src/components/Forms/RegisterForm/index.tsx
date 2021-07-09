@@ -36,6 +36,7 @@ export function RegisterForm() {
   };
 
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const [confirmModalOpen, setConfirmModalOpen] = useState(false);
   function handleOpenConfirmModal() {
@@ -95,7 +96,7 @@ export function RegisterForm() {
                 size='medium'
                 InputProps={{
                   inputComponent: CustomInputMask as any,
-                  endAdornment: values.cpf.length === 14 && (
+                  endAdornment: values.cpf.trim().length === 14 && (
                     <CheckIcon className={classes.iconCheck} />
                   ),
                 }}
@@ -112,7 +113,7 @@ export function RegisterForm() {
                 label='E-mail'
                 className={classes.inputForm}
                 InputProps={{
-                  endAdornment: values.email && (
+                  endAdornment: !errors.email && (
                     <CheckIcon className={classes.iconCheck} />
                   ),
                 }}
@@ -157,15 +158,21 @@ export function RegisterForm() {
                 className={classes.inputForm}
                 variant='filled'
                 size='medium'
-                type='password'
+                type={showConfirmPassword ? "text" : "password"}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position='end'>
                       <IconButton
-                        onClick={() => setShowPassword(!showPassword)}
+                        onClick={() =>
+                          setShowConfirmPassword(!showConfirmPassword)
+                        }
                         edge='end'
                       >
-                        {showPassword ? <Visibility /> : <VisibilityOff />}
+                        {showConfirmPassword ? (
+                          <Visibility />
+                        ) : (
+                          <VisibilityOff />
+                        )}
                       </IconButton>
                     </InputAdornment>
                   ),
