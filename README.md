@@ -7,10 +7,10 @@
   # Put these commands at the command prompt 
 
   # Clone this repository:
-  $ git clone https://gitlab.com/italofsan/timesheet-oowlish.git
+  $ git clone https://github.com/italofsan/register-screen
 
   # Go to the folder:
-  $ cd timesheet-oowlish
+  $ cd register-screen
 
   # Install all dependencies:
   $ yarn
